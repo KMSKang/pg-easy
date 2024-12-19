@@ -23,7 +23,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
-    implementation 'com.github.KMSKang:be-library:1.2.4'
+//    implementation 'com.github.KMSKang:pg-easy:1.0.1'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 

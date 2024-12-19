@@ -1,6 +1,5 @@
 package com.examples.www.toss;
 
-import com.pgeasy.www.*;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class TossPaymentController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    private final PgPaymentService pgPaymentService;
+//    private final PgPaymentService pgPaymentService;
 //    private final Map<String, String> billingKeyMap = new HashMap<>();
 
     @Value("${toss-client-key}")
@@ -34,24 +33,24 @@ public class TossPaymentController {
         return "/toss/widget/checkout";
     }
 
-    @PostMapping("/payment/approve")
-    public ResponseEntity<BaseResult> confirmPayment(@RequestBody TossConfirmPaymentRequest confirmPaymentRequest) {
-        ApprovePayment approvePayment = createApprovePayment(confirmPaymentRequest.paymentKey(), confirmPaymentRequest.orderId(), confirmPaymentRequest.amount());
-        CommonResponse<BaseResult> commonResponse = pgPaymentService.approvePayment(approvePayment);
-        logger.info("commonResponse: {}", commonResponse);
-        return ResponseEntity.status(commonResponse.code()).body(commonResponse.data());
-    }
-
-    private ApprovePayment createApprovePayment(String paymentKey, String orderId, Integer amount) {
-        return ApprovePayment.builder()
-                             .secretKey(WIDGET_SECRET_KEY)
-                             .baseApprovePayment(TossPayApprovePayment.builder()
-                                                                      .paymentKey(paymentKey)
-                                                                      .orderId(orderId)
-                                                                      .amount(amount)
-                                                                      .build())
-                             .build();
-    }
+//    @PostMapping("/payment/approve")
+//    public ResponseEntity<BaseResult> confirmPayment(@RequestBody TossConfirmPaymentRequest confirmPaymentRequest) {
+//        ApprovePayment approvePayment = createApprovePayment(confirmPaymentRequest.paymentKey(), confirmPaymentRequest.orderId(), confirmPaymentRequest.amount());
+//        CommonResponse<BaseResult> commonResponse = pgPaymentService.approvePayment(approvePayment);
+//        logger.info("commonResponse: {}", commonResponse);
+//        return ResponseEntity.status(commonResponse.code()).body(commonResponse.data());
+//    }
+//
+//    private ApprovePayment createApprovePayment(String paymentKey, String orderId, Integer amount) {
+//        return ApprovePayment.builder()
+//                             .secretKey(WIDGET_SECRET_KEY)
+//                             .baseApprovePayment(TossPayApprovePayment.builder()
+//                                                                      .paymentKey(paymentKey)
+//                                                                      .orderId(orderId)
+//                                                                      .amount(amount)
+//                                                                      .build())
+//                             .build();
+//    }
 
 //    @RequestMapping(value = "/confirm-billing")
 //    public ResponseEntity<JSONObject> confirmBilling(@RequestBody String jsonBody) throws Exception {

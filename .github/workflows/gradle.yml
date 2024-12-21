@@ -3,8 +3,8 @@ name: Java CI with Gradle
 on:
   push:
     branches: [ "main" ]
-#  pull_request:
-#    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -162,4 +162,3 @@ jobs:
             - Version: ${{ env.new_version }}
           draft: false
           prerelease: false
-
